@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 import '../css/Table.css'
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css'
-import axios from "axios";
+import axios from 'axios'
 
 const USER_SERVICE_URL = 'https://jsonplaceholder.typicode.com/users';
 
@@ -42,15 +42,16 @@ class UserTableAutonomous extends Component {
         this.timer = null;
     }
 
+    fetchUsers = this.fetchUsersAsync;
 
-    fetchUsers = async () => {
+    async fetchUsersAsync() {
         try {
             const response = await axios.get(USER_SERVICE_URL);
             this.setState({users: response.data, isFetching: false});
         } catch (e) {
             console.log(e);
         }
-    }
+    };
 }
 
 export default UserTableAutonomous

@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import axios from 'axios'
 
 const USER_SERVICE_URL = 'https://jsonplaceholder.typicode.com/users';
 
@@ -22,17 +23,16 @@ class UserTableRenderProps extends Component {
         this.fetchUsers();
     }
 
-    fetchUsers = () => {
+    fetchUsersWithAxios = () => {
         this.setState({...this.state, isFetching: true});
-        fetch(USER_SERVICE_URL)
-            .then(response => response.json())
-            .then(result => {
-                if (result !== this.state.data) {
-                    this.setState({data: result, isFetching: false})
-                }
+        axios.get(USER_SERVICE_URL)
+            .then(response => {
+                this.setState({data: response.data, isFetching: false})
             })
             .catch(e => console.log(e));
     };
+
+    fetchUsers = this.fetchUsersWithAxios
 }
 
 export default UserTableRenderProps

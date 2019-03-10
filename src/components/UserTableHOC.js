@@ -25,7 +25,7 @@ class UserTableHOC extends Component {
         this.fetchUsers();
     }
 
-    fetchUsers = () => {
+    fetchUsersWithFetchAPI = () => {
         this.setState({...this.state, isFetching: true});
         fetch(USER_SERVICE_URL)
             .then(response => response.json())
@@ -36,6 +36,8 @@ class UserTableHOC extends Component {
             })
             .catch(e => console.log(e));
     };
+
+    fetchUsers = this.fetchUsersWithFetchAPI
 }
 
 export default UserTableHOC
