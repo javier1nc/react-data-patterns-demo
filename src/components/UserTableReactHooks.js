@@ -23,9 +23,9 @@ function UserTableReactHooks() {
                 setData({users: data.users, isFetching: true});
                 const response = await axios.get(USER_SERVICE_URL);
                 setData({users: response.data, isFetching: false});
-                this.setState({users: response.data, isFetching: false});
             } catch (e) {
                 console.log(e);
+                setData({users: data.users, isFetching: false});
             }
         };
         fetchUsers();

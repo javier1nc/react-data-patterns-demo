@@ -39,6 +39,7 @@ class UserTableAutonomous extends Component {
     }
 
     componentWillUnmount() {
+        clearInterval(this.timer);
         this.timer = null;
     }
 
@@ -46,10 +47,12 @@ class UserTableAutonomous extends Component {
 
     async fetchUsersAsync() {
         try {
+            this.setState({...this.state, isFetching: true});
             const response = await axios.get(USER_SERVICE_URL);
             this.setState({users: response.data, isFetching: false});
         } catch (e) {
             console.log(e);
+            this.setState({...this.state, isFetching: false});
         }
     };
 }

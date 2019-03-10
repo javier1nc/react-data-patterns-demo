@@ -32,9 +32,14 @@ class UserTableHOC extends Component {
             .then(result => {
                 if (result !== this.state.users) {
                     this.setState({users: result, isFetching: false})
+                } else {
+                    this.setState({...this.state, isFetching: false});
                 }
             })
-            .catch(e => console.log(e));
+            .catch(e => {
+                console.log(e);
+                this.setState({...this.state, isFetching: false});
+            });
     };
 
     fetchUsers = this.fetchUsersWithFetchAPI
