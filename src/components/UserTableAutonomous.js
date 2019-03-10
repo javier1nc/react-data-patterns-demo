@@ -7,9 +7,6 @@ import axios from "axios";
 const USER_SERVICE_URL = 'https://jsonplaceholder.typicode.com/users';
 
 function rowClassNameFormat(row, rowIdx) {
-    // row is whole row object
-    // rowIdx is index of row
-    console.log(row);
     return rowIdx % 2 === 0 ? 'Gold-Row' : 'Silver-Row';
 }
 
@@ -38,7 +35,13 @@ class UserTableAutonomous extends Component {
 
     componentDidMount() {
         this.fetchUsers();
+        this.timer = setInterval(() => this.fetchUsers(), 5000);
     }
+
+    componentWillUnmount() {
+        this.timer = null;
+    }
+
 
     fetchUsers = async () => {
         try {
