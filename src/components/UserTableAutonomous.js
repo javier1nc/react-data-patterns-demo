@@ -43,8 +43,6 @@ class UserTableAutonomous extends Component {
         this.timer = null;
     }
 
-    fetchUsers = this.fetchUsersAsync;
-
     async fetchUsersAsync() {
         try {
             this.setState({...this.state, isFetching: true});
@@ -55,6 +53,8 @@ class UserTableAutonomous extends Component {
             this.setState({...this.state, isFetching: false});
         }
     };
+
+    fetchUsers = this.fetchUsersAsync;
 }
 
 export default UserTableAutonomous

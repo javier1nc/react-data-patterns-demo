@@ -25,7 +25,10 @@ class UserTableRenderProps extends Component {
             .then(response => {
                 this.setState({data: response.data, isFetching: false})
             })
-            .catch(e => console.log(e));
+            .catch(e => {
+                console.log(e);
+                this.setState({...this.state, isFetching: false});
+            });
     };
 
     fetchUsers = this.fetchUsersWithAxios

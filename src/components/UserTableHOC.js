@@ -27,11 +27,7 @@ class UserTableHOC extends Component {
         fetch(USER_SERVICE_URL)
             .then(response => response.json())
             .then(result => {
-                if (result !== this.state.users) {
-                    this.setState({users: result, isFetching: false})
-                } else {
-                    this.setState({...this.state, isFetching: false});
-                }
+                this.setState({users: result, isFetching: false})
             })
             .catch(e => {
                 console.log(e);
