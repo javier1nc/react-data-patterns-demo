@@ -13,11 +13,7 @@ class UserTableRenderProps extends Component {
         };
     }
 
-    render() {
-        return (
-            this.props.children(this.state)
-        )
-    }
+    render = () => this.props.children(this.state);
 
     componentDidMount() {
         this.fetchUsers();

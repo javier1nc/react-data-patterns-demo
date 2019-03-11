@@ -13,13 +13,10 @@ class UserTableHOC extends Component {
         };
     }
 
-    render() {
-        return (
-            <div>
-                <SimpleUserTable data={this.state.users} isFetching={this.state.isFetching}/>
-            </div>
-        )
-    }
+    render = () => <SimpleUserTable data={this.state.users}
+                                    isFetching={this.state.isFetching}
+    />;
+
 
     componentDidMount() {
         this.fetchUsers();
